@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Stock price</h1>
+    <button id="fetchprice">Give me the dollar price</button>
+    <div id="price_display"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded',function(){
+            fetch('/get-stock-price')
+            .then(response => response.json())
+            .then(data => {
+                const currentDay = new Date();
+                const day_string = currentDay.toLocaleDateString('en-US',{
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                });
+                document.getElementById('price_display').innerText = "As of " + day_string + "\n" + 'The Current Stock Price of Apple: ' + data.price;
+            });
+        });
+    </script>
+</body>
+</html>
