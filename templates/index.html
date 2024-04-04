@@ -4,10 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+
 </head>
 <body>
-    <h1>Stock price</h1>
-    <button id="fetchprice">Give me the dollar price</button>
+    <h1><span>Stock price</span></h1>
+    <button id="toggleDark">Switch to dark mode</button>
+    <script>
+        document.getElementById('toggleDark').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+        });
+    </script>
     <div id="price_display"></div>
     <script>
         document.addEventListener('DOMContentLoaded',function(){
